@@ -88,7 +88,7 @@ func main() {
 }
 
 func displayCustomText(customTextDone chan<- bool) {
-	customText := "Made with ×ËÏ a ÎÊ× by GrozdniyAndy of XSS.is"
+	customText := "Made with  ˗ˋˏ ♡ ˎˊ˗ by GrozdniyAndy of XSS.is"
 
 	for i := 0; i <= len(customText); i++ {
 		fmt.Print("\r" + customText[:i] + "_")
