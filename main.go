@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
@@ -13,27 +14,24 @@ var checkedLines int
 var mu sync.Mutex
 
 func main() {
+	var inputFileName string
+	var numThreads int
+
+	flag.StringVar(&inputFileName, "f", "", "Path to the file containing domains")
+	flag.IntVar(&numThreads, "t", 1, "Number of threads")
+
+	flag.Parse()
+
+	if inputFileName == "" {
+		fmt.Println("Please provide a valid filename using the -f option")
+		return
+	}
+
 	customTextDone := make(chan bool)
 
 	go displayCustomText(customTextDone)
 
 	<-customTextDone
-
-	fmt.Print("\n\nEnter the path to the file containing domains: ")
-	var inputFileName string
-	_, err := fmt.Scanln(&inputFileName)
-	if err != nil {
-		fmt.Printf("Error reading input: %v\n", err)
-		return
-	}
-
-	fmt.Print("Enter the number of concurrent threads: ")
-	var numThreads int
-	_, err = fmt.Scanln(&numThreads)
-	if err != nil {
-		fmt.Printf("Error reading input: %v\n", err)
-		return
-	}
 
 	file, err := os.Open(inputFileName)
 	if err != nil {
@@ -88,7 +86,7 @@ func main() {
 }
 
 func displayCustomText(customTextDone chan<- bool) {
-	customText := "Made with  ˗ˋˏ ♡ ˎˊ˗ by GrozdniyAndy of XSS.is"
+	customText := "Made with  ×ËÏ a ÎÊ× by GrozdniyAndy of XSS.is"
 
 	for i := 0; i <= len(customText); i++ {
 		fmt.Print("\r" + customText[:i] + "_")
@@ -98,9 +96,8 @@ func displayCustomText(customTextDone chan<- bool) {
 	fmt.Print("\r" + customText)
 	time.Sleep(1000 * time.Millisecond)
 
-	customTextDone <- true 
+	customTextDone <- true
 }
-
 
 func checkSecurityHeaders(domain string) {
 	checkURL(domain, "http")
