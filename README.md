@@ -6,8 +6,8 @@ Tik (Тык) is a command-line tool written in Go for concurrently checking secu
 
 ## Table of Contents
 - [Features](https://github.com/grozdniyandy/tik#features)
-- [Usage](#usage)
-- [Installation](#installation)
+- [Usage](https://github.com/grozdniyandy/tik#usage)
+- [Installation](https://github.com/grozdniyandy/tik#installation)
 - [Example Input File](https://github.com/grozdniyandy/tik#example-input-file)
 - [Dependencies](https://github.com/grozdniyandy/tik#dependencies)
 - [License](https://github.com/grozdniyandy/tik#license)
@@ -20,11 +20,10 @@ Tik (Тык) is a command-line tool written in Go for concurrently checking secu
 
 ## Usage
 1. **Clone or Download:** Clone this repository or download the code to your local machine.
-2. **Build the Code:** Ensure you have Go installed and build the code using the following command:
+2. **Run the tool:** Run the tool using the following command:
    ```
-   go run main.go
+   go run main.go -f <filename> -t <thread-count>
    ```
-3. **Give input:** Input file and number of threads.
 
 ## Installation
 You can either check the "Usage" or download already compiled code from "releases".
